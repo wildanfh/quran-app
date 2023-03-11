@@ -28,8 +28,11 @@ function QuranAyatItem({
     }
     audioRef.current.addEventListener('ended', handleAudioEnd);
     return () => {
-      // eslint-disable-next-line
-      audioRef.current.removeEventListener('ended', handleAudioEnd);
+      if(audioRef.current) {
+        // eslint-disable-next-line
+        audioRef.current.removeEventListener('ended', handleAudioEnd);
+      }
+      return false;
     };
   }, [audioRef, setIsPlaying]);
 

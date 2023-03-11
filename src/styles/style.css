@@ -1,0 +1,17 @@
+@import url('./pages/quran-surah.css');
+@import url('./pages/quran-ayat.css');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ddd;
+}
+
+a {
+  text-decoration: none;
+}

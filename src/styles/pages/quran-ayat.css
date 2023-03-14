@@ -1,3 +1,9 @@
+.quran-ayat__container {
+  max-width: 800px;
+  margin: 3rem auto;
+  border-radius: 1rem;
+}
+
 .quran-ayat__headerWrapper {
   margin: auto;
   padding: 1rem;
@@ -42,6 +48,7 @@
 .quran-ayat__itemWrapper {
   max-width: 800px;
   margin: auto;
+  padding-bottom: 3rem;
 }
 
 .quran-ayat__itemContainer {
@@ -76,6 +83,7 @@
 
 .playing {
   color: #155e70;
+  border-color: #155e70;
 }
 
 .quran-ayat__arti {
@@ -92,6 +100,10 @@
 @media (min-width: 800px) {
   .quran-ayat__headerWrapper {
     max-width: 800px;
+  }
+
+  .quran-ayat__container {
+    border: 1px solid #333;
   }
 }
 

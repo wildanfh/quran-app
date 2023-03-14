@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { getVerses } from "../../utils/verses";
+import QuranAppFooter from "../Universal/QuranAppFooter";
+import QuranAppHeader from "../Universal/QuranAppHeader";
 import QuranAyatBody from "./QuranAyatBody";
 import QuranAyatHeader from "./QuranAyatHeader";
 
@@ -22,8 +24,15 @@ class QuranAyatApp extends React.Component {
     console.log(this.state.verses);
     return (
       <>
-        <QuranAyatHeader {...this.state.verses} />
-        <QuranAyatBody verses={this.state.verses} ayats={this.state.verses.ayat} />
+        <QuranAppHeader />
+        <div className="quran-ayat__container">
+          <QuranAyatHeader {...this.state.verses} />
+          <QuranAyatBody
+            verses={this.state.verses}
+            ayats={this.state.verses.ayat}
+          />
+        </div>
+        <QuranAppFooter />
       </>
     );
   }

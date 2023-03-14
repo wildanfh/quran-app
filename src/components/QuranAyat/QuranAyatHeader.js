@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaBook, FaPause, FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function QuranAyatHeader({nomor, namaLatin, nama, tempatTurun, arti, jumlahAyat, audioFull}) {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
-
   const onPlayAudio = () => {
     if (!isPlaying) {
       audioRef.current.play();
@@ -41,12 +41,12 @@ function QuranAyatHeader({nomor, namaLatin, nama, tempatTurun, arti, jumlahAyat,
         </p>
         <p className="quran-ayat__headerButtonContainer">
           <audio ref={audioRef} src={audioFull["05"]}></audio>
-          <button className="quran-ayat__headerButton" onClick={onPlayAudio}>
-            { isPlaying ? 'Pause' : 'Play' }
+          <button className={isPlaying ? 'quran-ayat__headerButton playing' : 'quran-ayat__headerButton'} onClick={onPlayAudio}>
+          { isPlaying ? <FaPause /> : <FaPlay/> } {isPlaying ? 'Pause' : 'Play'}
           </button>
           <Link to={`/tafsir/${nomor}`}>
             <button className="quran-ayat__headerButton">
-              📃Tafsir
+              <FaBook /> Tafsir
             </button>
           </Link>
         </p>

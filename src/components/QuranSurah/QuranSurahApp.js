@@ -1,5 +1,6 @@
 import React from "react";
 import chapters from "../../utils/chapters";
+import QuranAppFooter from "../Universal/QuranAppFooter";
 import QuranSurahBody from "./QuranSurahBody";
 import QuranSurahHeader from "./QuranSurahHeader";
 
@@ -14,15 +15,17 @@ class QuranSurahApp extends React.Component {
   }
 
   onSearchHandler(text) {
-    if (text.length !== 0 && text.trim() !== "") {
+    let teks = '';
+    teks = text;
+    if (teks.length === 0) {
       this.setState({
-        chapters: this.state.chapters.filter((chapter) =>
-          chapter.namaLatin.toLowerCase().includes(text.toLowerCase())
-        ),
+        chapters: chapters,
       });
     } else {
       this.setState({
-        chapters: chapters,
+        chapters: this.state.chapters.filter((chapter) =>
+          chapter.namaLatin.toLowerCase().includes(teks.toLowerCase())
+        ),
       });
     }
   }
@@ -32,6 +35,7 @@ class QuranSurahApp extends React.Component {
       <>
         <QuranSurahHeader onSearch={this.onSearchHandler} />
         <QuranSurahBody chapters={this.state.chapters} />
+        <QuranAppFooter />
       </>
     );
   }

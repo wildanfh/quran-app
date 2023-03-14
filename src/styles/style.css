@@ -16,3 +16,22 @@ body {
 a {
   text-decoration: none;
 }
+
+.quran-app__footer {
+  width: 100%;
+  padding: 1rem;
+  border-top: 1px solid #333;
+  background-color: #333;
+}
+
+.quran-app__footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .3rem;
+  color: #fdfdfd;
+}
+
+p .footer-heart {
+  color: rgb(226, 53, 53);
+}

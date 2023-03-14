@@ -20,7 +20,7 @@ function QuranTafsirApp() {
 
   useEffect(() => {
     getSurahTafsirs(nomor);
-  }, []);
+  }, [nomor]);
 
   return (
     <>

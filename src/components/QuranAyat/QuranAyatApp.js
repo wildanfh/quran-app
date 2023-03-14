@@ -19,6 +19,7 @@ class QuranAyatApp extends React.Component {
   }
 
   render() {
+    console.log(this.state.verses);
     return (
       <>
         <QuranAyatHeader {...this.state.verses} />

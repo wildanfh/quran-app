@@ -1,5 +1,6 @@
 @import url('./pages/quran-surah.css');
 @import url('./pages/quran-ayat.css');
+@import url('./pages/quran-tafsir.css');
 
 * {
   padding: 0;

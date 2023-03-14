@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
-function QuranAyatHeader({namaLatin, nama, tempatTurun, arti, jumlahAyat}) {
+function QuranAyatHeader({nomor, namaLatin, nama, tempatTurun, arti, jumlahAyat, audioFull}) {
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const onPlayAudio = () => {
+    if (!isPlaying) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    } else {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  useEffect(() => {
+    function handleAudioEnd() {
+      setIsPlaying(false);
+    }
+    audioRef.current.addEventListener('ended', handleAudioEnd);
+    return () => {
+      if(audioRef.current) {
+        // eslint-disable-next-line
+        audioRef.current.removeEventListener('ended', handleAudioEnd);
+      }
+      return false;
+    };
+  }, [audioRef, setIsPlaying]);
+
   return (
     <div className="quran-ayat__headerWrapper">
       <div className="quran-ayat__headerContainer">
@@ -11,15 +40,15 @@ function QuranAyatHeader({namaLatin, nama, tempatTurun, arti, jumlahAyat}) {
           {tempatTurun} • {arti} • {jumlahAyat} Ayat
         </p>
         <p className="quran-ayat__headerButtonContainer">
-          <audio src="https://equran.nos.wjv-1.neo.id/audio-full/Misyari-Rasyid-Al-Afasi/001.mp3"></audio>
-          <button className="quran-ayat__headerButton">
-            ▶️ Audio
+          <audio ref={audioRef} src={audioFull["05"]}></audio>
+          <button className="quran-ayat__headerButton" onClick={onPlayAudio}>
+            { isPlaying ? 'Pause' : 'Play' }
           </button>
-          <a href="/tafsir/1">
+          <Link to={`/tafsir/${nomor}`}>
             <button className="quran-ayat__headerButton">
               📃Tafsir
             </button>
-          </a>
+          </Link>
         </p>
       </div>
     </div>

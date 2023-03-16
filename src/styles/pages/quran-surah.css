@@ -115,6 +115,14 @@ input::placeholder {
   font-weight: 600;
 }
 
+.quran-surah-message {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgb(192, 75, 75);
+  text-transform: capitalize;
+}
+
 @media only screen and (min-width: 500px) {
   .quran-surah-list {
     grid-template-columns: 1fr 1fr;
